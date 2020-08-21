@@ -9,6 +9,7 @@ There are two primary ways to integrate with Ephesoft and NWC.
 
 ## Xtensions
 
+https://ephesoft.com/docs/products/transact/developers/web-services-api/web-services-integrating-nintex/
 
 ## External Start
 
