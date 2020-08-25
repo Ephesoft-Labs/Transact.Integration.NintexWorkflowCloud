@@ -25,5 +25,5 @@ The External Start uses a NWC component workflow start to trigger a workflow pro
 
 ## License
 
-Ephesoft Labs is licensed under the Ephesoft Source Code License.
+Ephesoft Labs is licensed under the [Ephesoft Source Code License](https://github.com/Ephesoft-Labs/Transact.Integration.NintexWorkflowCloud/blob/master/LICENSE.md).
 
