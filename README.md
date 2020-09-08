@@ -22,7 +22,7 @@ For detailed steps, refer to [Integrating Transact Web Services with Nintex](htt
 # External Start
 
 The External Start option uses an NWC component workflow to trigger a workflow process.
-A Transact [export script](External Start Export Script/ExportScript.java) is used with the Transact **Custom Export Plugin** to format the JSON response that is used to trigger the NWC external start.
+A Transact [export script](https://github.com/Ephesoft-Labs/Transact.Integration.NintexWorkflowCloud/blob/master/External%20Start%20Export%20Script/ExportScript.java) is used with the Transact **Custom Export Plugin** to format the JSON response that is used to trigger the NWC external start.
 
 ## Configuratrating NWC Component workflow, Custom Export plugin, and Export Script.java
 1) The NWC workflow start event must be configured to use the component workflow trigger, see the below screenshot for an example of the configuration.
