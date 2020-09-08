@@ -1,3 +1,4 @@
+
 # Transact.Integration.NintexWorkflowCloud
 
 This repository holds information on how to integrate Ephesoft Transact with Nintex Workflow Cloud (NWC). There are two primary ways to integrate Ephesoft and NWC: **Nintex Xtensions** and **External Start**.
@@ -10,8 +11,7 @@ This repository holds information on how to integrate Ephesoft Transact with Nin
 ## Prerequisites
 
 To take full advantage of this repository, you will need the following:
-- A Nintex account
-- A Box Developer’s account
+- A Nintex Workflow Cloud account
 
 # Nintex Xtensions
 
@@ -21,8 +21,8 @@ For detailed steps, refer to [Integrating Transact Web Services with Nintex](htt
 
 # External Start
 
-The External Start uses an NWC component workflow start to trigger a workflow process.
-A Transact export script in this repository is used with the Transact Custom Export Plugin to format the JSON response that is used to trigger the NWC external start.
+The External Start option uses an NWC component workflow to trigger a workflow process.
+A Transact [export script](External Start Export Script/ExportScript.java) is used with the Transact **Custom Export Plugin** to format the JSON response that is used to trigger the NWC external start.
 
 ## Configuratrating NWC Component workflow, Custom Export plugin, and Export Script.java
 1) The NWC workflow start event must be configured to use the component workflow trigger, see the below screenshot for an example of the configuration.
@@ -53,8 +53,9 @@ A Transact export script in this repository is used with the Transact Custom Exp
 			}
 
 6) Now we will configure the Transact Export Script. 
-        //This is the path that the custom Export files will be exported to. This script will use the data populated in this configured folder
-	   public static String CUSTOM_EXPORT_FILE_PATH = "C:\\\Ephesoft\\\SharedFolders\\\final-drop-folder\\\CustomExport\\\\";
+
+		//This is the path that the custom Export files will be exported to. This script will use the data populated in this configured folder
+		public static String CUSTOM_EXPORT_FILE_PATH = "C:\\Ephesoft\\SharedFolders\\final-drop-folder\\CustomExport\\";
 > **Note:** The Folder path in the EXPORT_SCRIPT must match with the CUSTOM_EXPORT_PLUGIN Folder Path from step 5. The path should have \\\ for java to escape special characters
 7) In this step, we will add Ephesoft document types that should be mapped to any webhooks that are needed to be triggered
 
