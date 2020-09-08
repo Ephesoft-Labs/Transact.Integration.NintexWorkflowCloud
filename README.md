@@ -52,15 +52,15 @@ A Transact [export script](External Start Export Script/ExportScript.java) is us
 				}
 			}
 
-6) Now we will configure the Transact Export Script. 
+6) Now we will configure the Transact Export Script. Update the Export path to reflect the same path used in the **CUSTOM_EXPORT_PLUGIN**.
 
 		//This is the path that the custom Export files will be exported to. This script will use the data populated in this configured folder
 		public static String CUSTOM_EXPORT_FILE_PATH = "C:\\Ephesoft\\SharedFolders\\final-drop-folder\\CustomExport\\";
 > **Note:** The Folder path in the EXPORT_SCRIPT must match with the CUSTOM_EXPORT_PLUGIN Folder Path from step 5. The path should have \\\ for java to escape special characters
 7) In this step, we will add Ephesoft document types that should be mapped to any webhooks that are needed to be triggered
 
-		      DOCTYPE_WEBHOOK_MAPPING.put("doctypeName1", "https://XXXXXX.workflowcloud.com/api/v1/workflow/published/tokenxxxxxxxxxxxxxxx");
-			DOCTYPE_WEBHOOK_MAPPING.put("doctypeName2", "https://XXXXXX.workflowcloud.com/api/v1/workflow/published/tokenxxxxxxxxxxxxxxx");
+		DOCTYPE_WEBHOOK_MAPPING.put("doctypeName1", "https://XXXXXX.workflowcloud.com/api/v1/workflow/published/tokenxxxxxxxxxxxxxxx");
+		DOCTYPE_WEBHOOK_MAPPING.put("doctypeName2", "https://XXXXXX.workflowcloud.com/api/v1/workflow/published/tokenxxxxxxxxxxxxxxx");
 >**Note:** copy each line above if you need to support more then one document type.
 
 ## Installation
