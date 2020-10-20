@@ -1,0 +1,150 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Ephesoft Web Service API provides a simple method for real-time integration and exposure of Ephesoft processes to external applications, allowing developers to employ advanced capture capabilities in content management systems and other workflows.",
+    "version": "1.0",
+    "title": "Ephesoft Transact"
+  },
+  "x-ntx-host": "{{host}}",
+  "basePath": "/dcma/rest",
+  "host": "example.ephesoft.com",
+  "tags": [
+    {
+      "name": "ephesoft-mobile-web-services",
+      "description": "Ephesoft Mobile Web Services"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "paths": {
+    "/v2/ocrClassifyExtract": {
+      "post": {
+        "tags": [
+          "ephesoft-mobile-web-services"
+        ],
+        "summary": "Ocr Classify Extract",
+        "description": "This API performs classification based on first page only and extraction on the input documents. The extraction plugins are fetched from  the batch class corresponding to the input batch class identifier. Classification and Extraction will be performed as per the plugins configured in the batch class.<br/>**Note:** Only one input file can be provided as input at one execution. If you want to process multiple files at a time then use zip input. Following are the type of inputs.<br/>1. PDF<br/>2. TIF/TIFF<br/>3. Zip file (consisting of tif/tiff or pdf files) ",
+        "operationId": "ocrClassifyExtractJsonUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "batchClassIdentifier",
+            "in": "formData",
+            "description": "Batch Class Identifier",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "input file",
+            "in": "formData",
+            "description": "Input file",
+            "required": false,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "403": {
+            "description": "Unauthorized Access"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/uploadBatch/{batchClassIdentifier}/{batchInstanceName}": {
+      "post": {
+        "tags": [
+          "ephesoft-mobile-web-services"
+        ],
+        "summary": "Upload a Batch",
+        "description": "This web service uploads a batch for a given batch class. All uploaded files are copied to the drop (UNC) folder for the batch class as a single folder. The batch instance name and batch class identifier are provided as input to the web service. The user must be authorized to execute a batch instance in that batch class otherwise an error message will be generated.",
+        "operationId": "uploadBatchUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/xml",
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "input3.pdf",
+            "in": "formData",
+            "description": "the name of the file to be uploaded",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "batchClassIdentifier",
+            "in": "path",
+            "description": "Batch Class ID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "batchInstanceName",
+            "in": "path",
+            "description": "Name of the Batch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "403": {
+            "description": "Unauthorized Access"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic",
+      "x-ntx-connection-properties": {
+        "type": "object",
+        "properties": {
+          "host": {
+            "type": "string",
+            "title": "Host",
+            "description": "eg: host.ephesoft.com"
+          }
+        }
+      }
+    }
+  }
+}
