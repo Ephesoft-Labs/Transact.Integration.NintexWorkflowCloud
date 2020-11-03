@@ -15,8 +15,6 @@ To take full advantage of this repository, you will need the following:
 
 # Nintex Xtensions
 
-# Integrating Transact Web Services with Nintex
-
 This document provides an overview of how to integrate the `v2/ocrClassifyExtract` and `v2/ocrClassifyExtractBase64` web services with the Nintex workflow engine.
 
 ## Introduction
@@ -37,7 +35,7 @@ Most Transact web services use XML for input and output. Conversely, the `v2/ocr
 
  Following is an example of a simplified JSON response:
 
-```yaml
+```json
 {
     "Type": "Account_Cancellation",
     "Confidence": 59.21,
@@ -142,12 +140,12 @@ This will take you to the first step of a multi-step procedure to add your new c
 7. Accept the default value of **Basic Authentication**.
 8. Click **Next** to proceed to **Publish**.
 9. Accept the default values for **Name** and **Description**.
-10.Click **Choose a file** and upload the Ephesoft logo. Download the logo in this repository at [Xtensions/EphesoftLogo](Xtensions/EphesoftLogo.png).
+10. Click **Choose a file** and upload the Ephesoft logo. Download the logo in this repository at [Xtensions/EphesoftLogo](Xtensions/EphesoftLogo.png).
 
 ![figure8](screenshots/8.png)
 *Figure 8. Publish Settings*
 
- 10. Click **Publish**.
+11. Click **Publish**.
 
 Your connector will appear in your Private connector list with a green triangle and check mark to indicate that it’s a new connector. The new connector is now available to you for building and editing workflows.
 
@@ -171,7 +169,7 @@ Use the right panel to configure the connection.
 ![figure10](screenshots/10.png)
 *Figure 10. Transact Connection Details*
 
-4. Click **Connect**. If the connection is successful, the following message will appear:
+5. Click **Connect**. If the connection is successful, the following message will appear:
 
 ![figure11](screenshots/11.png)
 *Figure 11. Connection Created Notification*
@@ -207,7 +205,7 @@ To view the JSON response, navigate to the **Instances** screen and select your 
 
 ### Example: Parse the JSON Response to Determine Document Type
 Following is an example JSON response:
-```yaml
+```json
 {
 	"Type": "Account_Cancellation",
 	"Confidence": 59.21,
@@ -280,13 +278,16 @@ A Transact [export script](https://github.com/Ephesoft-Labs/Transact.Integration
 
 ## Configuratrating NWC Component workflow, Custom Export plugin, and Export Script.java
 1) The NWC workflow start event must be configured to use the component workflow trigger, see the below screenshot for an example of the configuration.
-![customconnector Image](/screenshots/2.png)  
+![customconnector Image](/screenshots/18.png)
+*Figure 18. Configuration Example*
 
 2) Configure the needed variables in the NWC Start event that you wish to capture in the JSON payload, the below screenshot shows the example variables. 
-![customconnector Image](/screenshots/3.png) 
+![customconnector Image](/screenshots/19.png)
+*Figure 19. Example Variables*
 
 3) Publish the workflow to get **URL with token**  and the **Request body example** this information will be needed to configure the Transact Export Script and the **Custom Export Plugin** within the Ephesoft Transact batch class. 
-![customconnector Image](/screenshots/4.png) 
+![customconnector Image](/screenshots/20.png)
+*Figure 20. Publish Workflow*
 
 4)  Moving over to the Transact application, add the following two plugins to the batch classes export module **CUSTOM_EXPORT_PLUGIN** and **EXPORT_SCRIPTING_PLUGIN**
 > **Note:** the order of the plugins is important. The CUSTOM_EXPORT_PLUGIN needs to execute before the EXPORT_SCRIPTING_PLUGIN.
@@ -295,7 +296,8 @@ A Transact [export script](https://github.com/Ephesoft-Labs/Transact.Integration
     - **Important** you must use the following configuration for the **File Name** for the Export Metadata File.
     - **\~BI:Identifier\~-\~DOC:Identifier\~** The Export Script we use will use this naming convention. 
   
-  ![customconnector Image](/screenshots/1.png)
+  ![customconnector Image](/screenshots/21.png)
+  *Figure 21. Configure Custom Export*
   
  **Note:**  Below is an example of a JSON payload that can be used in the **Custom Export Plugin**
   
