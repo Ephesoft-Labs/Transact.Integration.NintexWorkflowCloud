@@ -142,6 +142,11 @@
             "type": "string",
             "title": "Host",
             "description": "eg: host.ephesoft.com"
+          },
+          "basepath": {
+            "type": "string",
+            "title": "Basepath",
+            "description": "Only required if any additional URL info for REST services<br> Will be text between .com/ and /rest in service URL's eg example.ephesoft.com/{basepath}/rest/..."
           }
         }
       }
